@@ -1,11 +1,12 @@
 class MoviesController < ApplicationController
+  http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
   def index
     @movies = Movie.all
   end
   def show
     @movie = Movie.find(params[:id])
   end
-  
+
   def new
     @movie = Movie.new
   end
@@ -42,6 +43,6 @@ class MoviesController < ApplicationController
 
   private
     def movie_params
-      params.require(:movie).permit(:title, :body)
+      params.require(:movie).permit(:title, :body, :status)
     end
 end
