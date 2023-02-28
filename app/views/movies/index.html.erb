@@ -5,9 +5,9 @@
 <ul>
 <% @movies.each do |movie|%>
   <% unless movie.archived? %>
-    <p>
+    <li>
       <%= link_to movie.title, movie%>
-    </p>
+    </li>
   <% end %>
 <% end %>
 </ul>
