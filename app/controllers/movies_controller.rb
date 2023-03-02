@@ -43,9 +43,21 @@ class MoviesController < ApplicationController
     def get_movies
       @movie = Movie.find(params[:id])
     rescue ActiveRecord::RecordNotFound => error
-      redirect_to root_path
-    end
+      # render plain: "Movie Record Not Available"
+      #render file: "#{Rails.root}/public/404.html"
+      # render status: 500
+      # render inline: "<h1>Movie Record Not Available</h1>"
+      # render html: helpers.tag.strong('Movie Record Not Available')
+      # render js: "alert('Hello Rails');"
+      # render MyRenderable.new
+      # render body: movies_path
+      # head :created, location: movie_path(@movie)
 
+      redirect_to "https://i.redd.it/ds1luav7dl851.jpg", allow_other_host: true
+    end
+    # def special_method
+    #   puts "Not Available"
+    # end
     def movie_params
       params.require(:movie).permit(:title, :body, :status)
     end
