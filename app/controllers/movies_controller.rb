@@ -1,10 +1,11 @@
 class MoviesController < ApplicationController
   http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
+
+  before_action :get_movies, only: [:show,:edit,:update,:destroy]
   def index
     @movies = Movie.all
   end
   def show
-    @movie = Movie.find(params[:id])
   end
 
   def new
@@ -21,11 +22,9 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
 
     if @movie.update(movie_params)
       redirect_to @movie
@@ -35,13 +34,18 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    movie = Movie.find(params[:id])
     movie.destroy
 
     redirect_to root_path, status: :see_other
   end
 
   private
+    def get_movies
+      @movie = Movie.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => error
+      redirect_to root_path
+    end
+
     def movie_params
       params.require(:movie).permit(:title, :body, :status)
     end
