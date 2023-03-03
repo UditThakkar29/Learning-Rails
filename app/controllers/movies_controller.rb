@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    movie.destroy
+    @movie.destroy
 
     redirect_to root_path, status: :see_other
   end
@@ -48,12 +48,12 @@ class MoviesController < ApplicationController
       # render status: 500
       # render inline: "<h1>Movie Record Not Available</h1>"
       # render html: helpers.tag.strong('Movie Record Not Available')
-      # render js: "alert('Hello Rails');"
+      render js: "alert('Hello Rails');"
       # render MyRenderable.new
       # render body: movies_path
       # head :created, location: movie_path(@movie)
 
-      redirect_to "https://i.redd.it/ds1luav7dl851.jpg", allow_other_host: true
+      # redirect_to "https://i.redd.it/ds1luav7dl851.jpg", allow_other_host: true
     end
     # def special_method
     #   puts "Not Available"

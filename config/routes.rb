@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root "movies#index"
-  
+  get "/movies/:id/comments", to: "comments#index"
+
   resources :movies do
     resources :comments
   end

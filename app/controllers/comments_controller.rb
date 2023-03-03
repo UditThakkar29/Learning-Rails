@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
 
   http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
+
+  def index
+    @id = Comment.find(params[:id]).movie_id
+  end
+
   def create
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.create(comment_params)
