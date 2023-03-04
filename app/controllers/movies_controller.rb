@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   def show
+    
   end
 
   def new

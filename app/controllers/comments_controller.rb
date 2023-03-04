@@ -4,6 +4,16 @@ class CommentsController < ApplicationController
 
   def index
     @id = Comment.find(params[:id]).movie_id
+    @name = Movie.find(@id).title
+    @comments = []
+    puts "***********************************"
+    puts Comment.find_by(movie_id: @id)
+    puts "***********************************"
+    Comment.all.each do |comment|
+      if comment.movie_id == @id
+        @comments << comment
+      end
+    end
   end
 
   def create
