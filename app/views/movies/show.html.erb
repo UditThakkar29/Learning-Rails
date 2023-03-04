@@ -10,8 +10,8 @@
                   } %></li>
 </ul>
 
-<%# <h2>Comments</h2> %>
-<!--<%= render @movie.comments %>-->
+<h2>Comments</h2>
+<%= render @movie.comments.last %>
 <%= link_to "Comments", movie_comments_path(@movie) %>
 
 
