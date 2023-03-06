@@ -4,12 +4,16 @@ class CommentsController < ApplicationController
   before_action :get_deatils, only: [:index]
 
   def index
-    @comments = []
-    Comment.all.each do |comment|
-      if comment.movie_id == @id
-        @comments << comment
-      end
-    end
+    @comments = @movie.comments
+    # Comment.all.each do |comment|
+    #   puts "*************************"
+    #   puts comment.movie_id,@id
+    #   if comment.movie_id === @id.to_i
+    #     puts "I am"
+    #     @comments.push(comment)
+    #   end
+    # end
+    # puts @comments
   end
 
   def show
@@ -34,7 +38,7 @@ class CommentsController < ApplicationController
   private
 
     def get_deatils
-      @id = Comment.find(params[:id]).movie_id
+      @id = params[:id].to_i
       @movie = Movie.find(params[:id])
       @name = Movie.find(@id).title
     end

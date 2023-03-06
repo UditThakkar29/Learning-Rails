@@ -11,7 +11,9 @@
 </ul>
 
 <h2>Comments</h2>
-<%= render @movie.comments.last %>
+<% if @movie.comments.size!=0 %>
+  <%= render @movie.comments.last %>
+<% end %>
 <%= link_to "Comments", movie_comments_path(@movie) %>
 
 
