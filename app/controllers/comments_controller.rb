@@ -19,6 +19,9 @@ class CommentsController < ApplicationController
   def show
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.find(params[:id])
+  rescue ActiveRecord::RecordNotFound => error
+
+    render file: "#{Rails.root}/public/404.html"
   end
 
   def create
@@ -41,6 +44,10 @@ class CommentsController < ApplicationController
       @id = params[:id].to_i
       @movie = Movie.find(params[:id])
       @name = Movie.find(@id).title
+    rescue ActiveRecord::RecordNotFound => error
+
+      render file: "#{Rails.root}/public/404.html"
+
     end
 
     def comment_params
