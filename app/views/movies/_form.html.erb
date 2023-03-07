@@ -1,3 +1,5 @@
+<!--
+<h1> form_with</h1>
 <%= form_with model: movie do |form| %>
   <div>
     <%= form.label :title %><br>
@@ -14,7 +16,16 @@
       <div><%= message %></div>
     <% end %>
   </div>
+  <div>
+    <%= form.fields_for :comments do |c|%>
+    <%= c.label "Commenter"%><br>
+    <%= c.text_area :commenter%><br>
+    <%= c.label "Body"%><br>
+    <%= c.text_area :body%>
+    <% end %>
 
+
+  </div>
   <div>
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
@@ -23,3 +34,46 @@
     <%= form.submit %>
   </div>
 <% end %>
+-->
+
+<h1> form_for use this to add comments at the same time :p</h1>
+<%= form_for movie do |form| %>
+   <%= form.label :title %><br>
+   <%= form.text_field :title %>
+   <br>
+   <%= form.label :body %><br>
+   <%= form.text_field :body %>
+   <br>
+   <%= form.label :status %><br>
+   <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+   <br>
+   <%= link_to_add_nested(form, :comments, "#comments") %>
+   <div id='comments'>
+      <%= form.fields_for :comments do |comment|%>
+        <%= render 'comment_fields', form: comment %>
+      <% end %>
+    </div>
+   <br>
+   <%= form.submit %>
+   <br>
+<% end %>
+
+<!--
+<h1> form_tag</h1>
+
+<%= form_tag(movies_path, :method => "post") do %>
+   <%= label_tag(:title, "Title:")  %><br>
+   <%= text_field_tag "movie[title]" %>
+   <br>
+   <%= label_tag(:body, "Body:")  %><br>
+   <%= text_field_tag "movie[body]" %>
+   <br>
+   <%= label_tag(:body, "abc:")  %><br>
+   <%= text_field_tag "movie[abc]" %>
+   <br>
+   <%= select_tag "movie[status]", options_for_select(["public","private","archived"])%>
+   <br>
+   <%= submit_tag("Submit") %>
+   <br>
+<% end %>
+-->

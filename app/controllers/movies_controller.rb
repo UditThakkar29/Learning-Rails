@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   def show
-
+    render layout: "test"
   end
 
   def new
@@ -63,6 +63,6 @@ class MoviesController < ApplicationController
     #   puts "Not Available"
     # end
     def movie_params
-      params.require(:movie).permit(:title, :body, :status)
+      params.require(:movie).permit(:title, :body, :status, comments_attributes: [:commenter, :body])
     end
 end
