@@ -1,3 +1,4 @@
+
 <!--
 <h1> form_with</h1>
 <%= form_with model: movie do |form| %>
@@ -15,16 +16,6 @@
     <% movie.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
-  <div>
-    <%= form.fields_for :comments do |c|%>
-    <%= c.label "Commenter"%><br>
-    <%= c.text_area :commenter%><br>
-    <%= c.label "Body"%><br>
-    <%= c.text_area :body%>
-    <% end %>
-
-
   </div>
   <div>
     <%= form.label :status %><br>
@@ -57,6 +48,7 @@
    <%= form.submit %>
    <br>
 <% end %>
+
 
 <!--
 <h1> form_tag</h1>

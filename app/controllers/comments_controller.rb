@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
   before_action :get_deatils, only: [:index]
 
+
   def index
     @comments = @movie.comments
     # Comment.all.each do |comment|
@@ -51,7 +52,7 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status, :_destroy)
+      params.require(:comment).permit(:id,:commenter, :body, :status)
     end
 
 end

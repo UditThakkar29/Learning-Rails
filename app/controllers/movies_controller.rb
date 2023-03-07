@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
 
+
   before_action :get_movies, only: [:show,:edit,:update,:destroy]
   def index
     @movies = Movie.all
@@ -11,6 +12,10 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    # debugger
+    puts "*********sdsdsdds*****************"
+    @movie.comments.build
+
   end
 
   def create
@@ -63,6 +68,7 @@ class MoviesController < ApplicationController
     #   puts "Not Available"
     # end
     def movie_params
-      params.require(:movie).permit(:title, :body, :status, comments_attributes: [:commenter, :body])
+      # debugger
+      params.require(:movie).permit(:title, :body, :status, comments_attributes: [:id,:commenter, :body, :_destroy])
     end
 end
