@@ -5,7 +5,7 @@ class Movie < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: {minimum: 5}
-  accepts_nested_attributes_for :comments, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :comments, allow_destroy: true
 
   # def comments_attributes=(comments_attributes)
   #   comments_attributes.each do |i,comment_attr|

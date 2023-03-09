@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   http_basic_authenticate_with name: "user", password: "1234", except: [:index, :show]
+  skip_before_action :verify_authenticity_token
 
 
   before_action :get_movies, only: [:show,:edit,:update,:destroy]
@@ -15,14 +16,17 @@ class MoviesController < ApplicationController
     # debugger
     puts "*********sdsdsdds*****************"
     @movie.comments.build
-
+    puts "*********sdsdsdds*****************"
   end
 
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
+      # puts "********saved**********"
+      @movie.comments.build(params[:movie][:comments_attributes])
       redirect_to @movie
     else
+      puts "********saved**********"
       render :new, status: :unprocessable_entity
     end
   end

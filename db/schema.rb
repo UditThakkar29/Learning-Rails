@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_28_061106) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_091237) do
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
@@ -27,6 +27,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_061106) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "pname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "tname"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "movies"
