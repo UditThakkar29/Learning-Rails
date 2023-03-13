@@ -3,6 +3,10 @@
 
 <p><%= @movie.body %></p>
 
+<% if @movie.image.attached? %>
+  <%= image_tag @movie.image %>
+<% end %>
+
 <ul>
   <li><%= link_to "Edit", edit_movie_path(@movie) %></li>
   <li><%= link_to "Destroy", movie_path(@movie), data: {
@@ -15,7 +19,7 @@
 <% if @movie.comments.size!=0 %>
   <%= render @movie.comments.last %>
 <% end %>
-<%= link_to "Comments", comment_mine_path %>
+<%= link_to "Comments", movie_comments_path(@movie) %>
 
 
 

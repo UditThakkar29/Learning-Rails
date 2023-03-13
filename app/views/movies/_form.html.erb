@@ -1,5 +1,5 @@
 
-<!--
+
 <h1> form_with</h1>
 <%= form_with model: movie do |form| %>
   <div>
@@ -22,11 +22,15 @@
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
   <div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
--->
 
+<!--
 <h1> form_for use this to add comments at the same time :p</h1>
 <%= form_for movie do |form| %>
    <%= form.label :title %><br>
@@ -49,7 +53,7 @@
    <br>
 <% end %>
 
-
+-->
 <!--
 <h1> form_tag</h1>
 

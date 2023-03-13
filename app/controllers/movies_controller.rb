@@ -73,6 +73,6 @@ class MoviesController < ApplicationController
     # end
     def movie_params
       # debugger
-      params.require(:movie).permit(:title, :body, :status, comments_attributes: [:id,:commenter, :body, :_destroy])
+      params.require(:movie).permit(:title, :body, :status,:image, comments_attributes: [:id,:commenter, :body, :_destroy])
     end
 end
