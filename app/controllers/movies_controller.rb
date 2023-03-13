@@ -8,7 +8,6 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   def show
-    render layout: "test"
   end
 
   def new

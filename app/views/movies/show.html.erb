@@ -1,11 +1,30 @@
 
-<h1><%= @movie.title%></h1>
+<div class="col-lg-12">
+  <div class="card mt-5 mb-5">
+    <div class = "card-body">
+      <div class="col-lg-12">
+        <h1 class="text-center"><%= @movie.title%></h1>
+      </div>
+      <div class="row mt-5">
+        <div class="col-lg-9">
+          <p><%= @movie.body%></p>
+          <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-primary" %>
+          <br>
+          <%= link_to "Destroy", movie_path(@movie), class: "mt-4 btn btn-danger", data: {
+                            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                          } %>
+        </div>
+        <div class="col-lg-3">
+          <% if @movie.image.attached? %>
+            <%= image_tag @movie.image , class: "img-class"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p><%= @movie.body %></p>
-
-<% if @movie.image.attached? %>
-  <%= image_tag @movie.image %>
-<% end %>
 
 <ul>
   <li><%= link_to "Edit", edit_movie_path(@movie) %></li>
