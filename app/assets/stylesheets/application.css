@@ -26,3 +26,8 @@
 th, td {
   padding: 10px;
 }
+
+.img-class{
+  width: 200px;
+  height: 300px;
+}

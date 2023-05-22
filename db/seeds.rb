@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+Api.create([
+  {
+    name: 'Pokedex',
+    description: 'An API showing all the lastest Pokemon',
+    url: 'https://pokedex2.p.rapidapi.com/pokedex/uk',
+    required_params_names: ['country']
+  }
+  {
+    
+  }
+
+])

@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @api %>
+
+<div>
+  <%= link_to "Edit this api", edit_api_path(@api), class: 'mb-4' %> |
+  <%= link_to "Back to apis", apis_path, class: 'mb-4' %><br>
+
+  <%#= link_to "Call API", call_api_api_path(@api), class: 'btn btn-primary' %>
+  <br>
+
+  <%= button_to "Destroy this api", @api, method: :delete, class: 'btn btn-danger' %><br>
+</div>
+
+<%= form_with url: call_api_api_path(@api), method: :get do |form| %>
+  <% 1.upto(@api.required_params_names.count) do |i|%>
+    <%= form.label @api.required_params_names[i-1] %>
+    <%= form.text_field @api.required_params_names[i-1] %>
+  <% end %>
+  <%= form.submit %>
+<% end %>
+

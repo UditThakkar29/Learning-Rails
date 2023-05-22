@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "vanilla-nested"
+
+//= require jquery
+//= require jquery_ujs

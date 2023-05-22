@@ -1,0 +1,18 @@
+<div id="<%= dom_id api %>">
+  <p>
+    <strong>Name:</strong>
+    <%= api.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= api.description %>
+  </p>
+
+  <p>
+    <% if api.thumbnail.persisted? %>
+      <%= image_tag api.thumbnail %>
+    <% end %>
+  </p>
+
+</div>

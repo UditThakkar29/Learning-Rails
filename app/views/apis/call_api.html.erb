@@ -1,0 +1,24 @@
+<h1 class="text-center mb-4">All Pokemons</h1>
+<div class="row justify-content-around">
+  <% @data.each do |d| %>
+    <div class="card col-2 col-sm-6 mb-3" style="width: 18rem;">
+      <img src="<%= d.image_url %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title text-center mb-3"><%= d.name %></h4>
+        <h5 class="card-text">Abilities</h5>
+        <ul>
+          <%= d.abilities.join(', ') %>
+        </ul>
+        <h5 class="card-text">Weakness</h5>
+        <ul>
+          <%= d.weakness.join(', ') %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="pagination mt-5 justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+

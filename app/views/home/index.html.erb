@@ -1,0 +1,22 @@
+<br>
+<br>
+<br>
+<h1>Home#index</h1>
+
+
+
+
+<div>
+  <%= link_to "All movies", movies_path, class: 'btn btn-primary' %>
+  <br>
+  <br>
+  <br>
+  <% @apis.each do |api| %>
+    <h3><%= api.name %></h3>
+    <p><%= api.description %></p>
+    <%= link_to "Show Page", api_path(api), class: 'btn btn-primary' %>
+  <% end %>
+
+
+  <%= link_to 'Register Your API', new_api_path, class: 'btn btn-success' %>
+</div>
